@@ -1,0 +1,20 @@
+﻿@model HomeViewModel
+
+@using Microsoft.AspNetCore.Identity
+@using AcmeDroneDeliveryService.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+       <b>Hello @UserManager.GetUserName(User)!</b>
+       <br />
+       <b>
+           <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Edit your profile</a>
+       </b>
+}
+else
+{
+     <b>Please <a asp-area="Identity" asp-page="/Account/Login" title="Manage">login</a> to book your order delivery with Acme Drone</b>
+}
